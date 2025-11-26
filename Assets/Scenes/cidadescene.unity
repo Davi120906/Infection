@@ -2980,6 +2980,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1996329871}
     m_Modifications:
+    - target: {fileID: 125645418720469682, guid: 6b43bcf518c54034cbf236ff83710397, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3087126491885636142, guid: 6b43bcf518c54034cbf236ff83710397, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5130138
@@ -3024,6 +3028,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2087174171}
+    - target: {fileID: 6556544012550380779, guid: 6b43bcf518c54034cbf236ff83710397, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7960083755347133424, guid: 6b43bcf518c54034cbf236ff83710397, type: 3}
       propertyPath: m_Name
       value: Zombie-Tileset---_0394_Capa-395_0 (2)
@@ -18890,6 +18898,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 761409506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &991959886
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.1111562
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4753642
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970862791327861886, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742870031099696271, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
+      propertyPath: m_Name
+      value: knifeitem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94e52ce22a84db94f91263374b9f76b9, type: 3}
 --- !u!4 &991972605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5979898206291236423, guid: 3a6648df4fa29f4498c70e407ed4dea1, type: 3}
@@ -20126,7 +20191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 2
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -20174,7 +20239,6 @@ RectTransform:
   m_Children:
   - {fileID: 1167743518}
   - {fileID: 966528081}
-  - {fileID: 172242158}
   - {fileID: 1062448237}
   - {fileID: 2113075821}
   - {fileID: 1680199273}
@@ -20185,6 +20249,7 @@ RectTransform:
   - {fileID: 361915141}
   - {fileID: 596176714}
   - {fileID: 2054045722}
+  - {fileID: 172242158}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -36782,6 +36847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4.3
+  segurandoArma: 0
   rb: {fileID: 2087174173}
   vidaMaxima: 20
   vidaAtual: 20
@@ -38076,3 +38142,4 @@ SceneRoots:
   - {fileID: 317611413}
   - {fileID: 1845167484}
   - {fileID: 1510840136}
+  - {fileID: 991959886}

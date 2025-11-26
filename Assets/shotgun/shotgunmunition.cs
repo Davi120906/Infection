@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class shotgunmunition : MonoBehaviour
 {
-    public int quantidade = 3; // quantas balas adiciona
+    public int quantidade = 3;
+
+    private AudioClip somRecarga;
+
+    private void Start()
+    {
+        somRecarga = Resources.Load<AudioClip>("audio/recarga");
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Tenta pegar o script do player
         PlayerMovementScript player = other.GetComponent<PlayerMovementScript>();
+
         if (player != null)
         {
-            // Aumenta a munição da 12
             player.balaDoze += quantidade;
 
-            // Destrói o item
+            AudioSource.PlayClipAtPoint(somRecarga, transform.position);
+
             Destroy(gameObject);
         }
     }

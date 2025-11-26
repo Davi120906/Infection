@@ -7,7 +7,7 @@ public class zombiemovement : MonoBehaviour
     public Transform player;
     public float wanderRadius = 10f;
     public float visionRadius = 3f;
-    public float speed = 2f;
+    public float speed = 1.5f;
     public float waitTime = 2f;
     public float invencivelDuracao = 1f;
     public float forcaRecuo = 1.5f;
@@ -44,7 +44,7 @@ public class zombiemovement : MonoBehaviour
 
         wanderRadius = 3f * scaleFactor;
         visionRadius = 2f * scaleFactor;
-        speed = 2.3f * scaleFactor;
+        speed = 1.5f * scaleFactor;
         waitTime = 2f;
         invencivelDuracao = 1f;
         forcaRecuo = 1.5f;

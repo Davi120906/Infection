@@ -84,6 +84,8 @@ public class pistolscript : MonoBehaviour
     {
         if (pistolPrefab != null)
             Instantiate(pistolPrefab, transform.position, transform.rotation);
+        PlayerMovementScript playerScript = player.gameObject.GetComponent<PlayerMovementScript>();
+        playerScript.segurandoArma = false;
 
         Destroy(gameObject);
     }

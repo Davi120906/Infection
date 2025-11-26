@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovementScript : MonoBehaviour
 {
     public float moveSpeed;
+    public bool segurandoArma;
     public Rigidbody2D rb;
     public int vidaMaxima = 20;
     public int vidaAtual;
@@ -18,12 +19,17 @@ public class PlayerMovementScript : MonoBehaviour
     public ScriptVida scriptVida;
     private bool invencivel = false;
     private SpriteRenderer spriteRenderer;
-
+    private AudioSource audioSource;
+    private AudioClip audioDano;
     private void Start()
     {
+        segurandoArma = true;
         vidaAtual = vidaMaxima;
         scriptVida.setMaxHealth(vidaMaxima);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioDano = Resources.Load<AudioClip>("audio/playerdano");
+        
     }
 
     void Update()
@@ -40,7 +46,9 @@ public class PlayerMovementScript : MonoBehaviour
 
         vidaAtual -= dano;
         scriptVida.setHealth(vidaAtual);
+        audioSource.PlayOneShot(audioDano);
         StartCoroutine(InvencivelTemp());
+        
     }
 
     IEnumerator InvencivelTemp()
@@ -90,13 +98,5 @@ public class PlayerMovementScript : MonoBehaviour
 
         }
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Inimigo"))
-        {
-            tomarDano(danoPorColisao);
-        }
     }
 }

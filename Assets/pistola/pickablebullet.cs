@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class pickablebullet : MonoBehaviour
 {
-    public int quantidade = 1; // quantas balas adiciona
+    public int quantidade = 1;
+
+    private AudioClip somRecarga;
+
+    private void Start()
+    {
+        somRecarga = Resources.Load<AudioClip>("audio/recarga");
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Verifica se colidiu com o Player
         PlayerMovementScript player = other.GetComponent<PlayerMovementScript>();
+
         if (player != null)
         {
-            // Aumenta a munição de pistola
             player.balasPistola += quantidade;
 
-            // Destroi o item
+            AudioSource.PlayClipAtPoint(somRecarga, transform.position);
+
             Destroy(gameObject);
         }
     }

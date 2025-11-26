@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KnifeItem : MonoBehaviour
 {
@@ -38,16 +38,25 @@ public class KnifeItem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Tenta pegar o script do jogador
+            var playerScript = collision.gameObject.GetComponent<PlayerMovementScript>();
+            // troque PlayerScript pelo nome real do seu script
+
+            // Se o player estiver segurando arma, não cria nada e não destrói
+            if (playerScript != null && playerScript.segurandoArma)
+                return;
+
             GameObject knifePrefab = Resources.Load<GameObject>(knifePrefabName);
 
             if (knifePrefab != null)
             {
                 GameObject novaKnife = Instantiate(knifePrefab, transform.position, Quaternion.identity);
                 KnifeScript knfs = novaKnife.GetComponent<KnifeScript>();
+
                 if (knfs != null)
                     knfs.player = collision.gameObject.transform;
             }
-
+            playerScript.segurandoArma = true;
             Destroy(gameObject);
         }
     }

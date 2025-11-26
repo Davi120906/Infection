@@ -15,24 +15,18 @@ public class shotgunmovementscript : MonoBehaviour
 
     private float lastShootTime = 0f;
 
-    // ---- ÁUDIO ----
     private AudioSource audioSource;
     private AudioClip somTiroDoze;
-    // ----------------
 
     void Start()
     {
         mainCamera = Camera.main;
         shotgunPrefab = Resources.Load<GameObject>("shotgunitem");
         bulletPrefab = Resources.Load<GameObject>("pistolbullet");
-
-        // --- Carregar áudio da pasta Resources/audio/ ---
         somTiroDoze = Resources.Load<AudioClip>("audio/tirodoze");
-
-        // --- Criar AudioSource ---
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
-        audioSource.volume = 0.5f; // 50%
+        audioSource.volume = 0.5f;
     }
 
     void Update()
@@ -45,7 +39,6 @@ public class shotgunmovementscript : MonoBehaviour
 
         Vector3 direction = (mousePos - transform.position).normalized;
         float angleDeg = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
         float displayAngle = angleDeg - 82f;
         transform.rotation = Quaternion.Euler(0f, 0f, displayAngle + 80f);
 
@@ -60,13 +53,11 @@ public class shotgunmovementscript : MonoBehaviour
     {
         PlayerMovementScript playerScript = player.GetComponent<PlayerMovementScript>();
         if (playerScript == null || playerScript.balaDoze <= 0) return;
-
         if (Time.time - lastShootTime < shootCooldown) return;
-        lastShootTime = Time.time;
 
+        lastShootTime = Time.time;
         playerScript.balaDoze--;
 
-        // 🔊 TOCAR SOM DA DOZE
         if (somTiroDoze != null)
             audioSource.PlayOneShot(somTiroDoze);
 
@@ -105,6 +96,10 @@ public class shotgunmovementscript : MonoBehaviour
     {
         if (shotgunPrefab != null)
             Instantiate(shotgunPrefab, transform.position, transform.rotation);
+
+        PlayerMovementScript playerScript = player.GetComponent<PlayerMovementScript>();
+        if (playerScript != null)
+            playerScript.segurandoArma = false;
 
         Destroy(gameObject);
     }

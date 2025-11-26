@@ -31,28 +31,34 @@ public class PistolItem : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verifica se colidiu com o player
+       
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Carrega o prefab da pistola
+           
+            PlayerMovementScript playerScript = collision.gameObject.GetComponent<PlayerMovementScript>();
+
+           
+            if (playerScript != null && playerScript.segurandoArma)
+                return;
+
+           
             GameObject pistolPrefab = Resources.Load<GameObject>(pistolPrefabName);
 
             if (pistolPrefab != null)
             {
-                // Instancia a pistola na posição atual
-                pistolPrefab = Instantiate(pistolPrefab, transform.position, Quaternion.identity);
-                pistolscript pistolScript = pistolPrefab.GetComponent<pistolscript>();
+               
+                GameObject novaPistol = Instantiate(pistolPrefab, transform.position, Quaternion.identity);
+                pistolscript pistolScript = novaPistol.GetComponent<pistolscript>();
+
                 if (pistolScript != null)
-                {
                     pistolScript.player = collision.gameObject.transform;
-                }
             }
             else
             {
                 Debug.LogError("Prefab '" + pistolPrefabName + "' não encontrado em Resources!");
             }
 
-            // Destroi o item arremessado
+            playerScript.segurandoArma = true;
             Destroy(gameObject);
         }
     }

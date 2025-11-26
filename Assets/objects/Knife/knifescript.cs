@@ -44,16 +44,20 @@ public class KnifeScript : MonoBehaviour
         {
             GameObject k = Instantiate(knifePrefab, transform.position, transform.rotation);
             KnifeItem ki = k.GetComponent<KnifeItem>();
-           if (ki != null) ki.foiJogada = true;
+
+            if (ki != null)
+                ki.foiJogada = true;
+
+           
+            var playerScript = player.GetComponent<PlayerMovementScript>(); 
+            if (playerScript != null)
+                playerScript.segurandoArma = false;
+
+
             Destroy(gameObject);
         }
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-          //  ataque = true;
-            //if (facaSom != null) audioSource.PlayOneShot(facaSom, 0.9f);
-        //}
-
+  
         if (ataque)
         {
             if (!privez)
